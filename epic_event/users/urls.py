@@ -17,6 +17,6 @@ urlpatterns = [
 
 # Celui-ci c'est juste pour étudier le syst. et avoir un accès admin pour gérer les utilisateurs :
 router = DefaultRouter()
-router.register('admin-users', AdminUserViewset, basename ='admin-users')
+router.register('admin-users', AdminUserViewset, basename='admin-users')
 
 urlpatterns += router.urls

@@ -5,27 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ed24f16-294a-413c-af81-dd9cf5b74694" name="Changes" comment="models, admin, serializers done for app users &amp; app crm">
-      <change beforePath="$PROJECT_DIR$/.env/bin/python" beforeDir="false" afterPath="$PROJECT_DIR$/.env/bin/python" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env/bin/python3" beforeDir="false" afterPath="$PROJECT_DIR$/.env/bin/python3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env/bin/python3.10" beforeDir="false" afterPath="$PROJECT_DIR$/.env/bin/python3.10" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/P12.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/P12.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/epic_event/crm/permissions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/epic_event/crm/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/copie_brouillonP12/EpicEvent/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copie_brouillonP12/EpicEvent/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copie_brouillonP12/crm/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copie_brouillonP12/crm/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copie_brouillonP12/crm/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copie_brouillonP12/crm/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copie_brouillonP12/crm/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copie_brouillonP12/users/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copie_brouillonP12/users/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copie_brouillonP12/users/managers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copie_brouillonP12/users/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copie_brouillonP12/users/serializers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copie_brouillonP12/users/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copie_brouillonP12/users/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/copie_brouillonP12/users/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/epic_event/crm/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/crm/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/epic_event/crm/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/crm/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/epic_event/epic_event/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/epic_event/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/epic_event/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/users/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/epic_event/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +42,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../P10" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

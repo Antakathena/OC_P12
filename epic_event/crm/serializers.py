@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import Client, Contract, Event
-from ..users.models import CustomUser
 
 
 class ClientSerializer(serializers.ModelSerializer):
@@ -8,6 +7,7 @@ class ClientSerializer(serializers.ModelSerializer):
     client_id = serializers.ReadOnlyField(source='id')
     status = serializers.ChoiceField(choices=Client.CHOICES)
     sales_contact = serializers.ReadOnlyField(source='sales_contact.username')
+    # nb : on choisit ici de donner le nom (username) du commercial plutôt que l'id
 
     class Meta:
         model = Client
