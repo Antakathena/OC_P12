@@ -2,7 +2,7 @@ from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-# from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
 
 from rest_framework import viewsets
 
@@ -42,3 +42,12 @@ class RegisterUserView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class AdminUserViewset(viewsets.ModelViewSet):
+    """Vue réservée aux administrateurs
+    Elle permet toutes les actions du CRUD sur les users
+    """
+    serializer_class = CustomUserSerializer
+    queryset = users = CustomUser.objects.all()
+    permission_classes = (IsAuthenticated, IsAdminUser)

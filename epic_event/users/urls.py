@@ -11,7 +11,7 @@ app_name = 'users'  # (pour éventuellement utiliser namespace dans les urls)
 urlpatterns = [
     path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('userslist/', UserView.as_view()),
+    path('users/', UserView.as_view()),
     path('signup/', RegisterUserView.as_view()),
 ]
 
