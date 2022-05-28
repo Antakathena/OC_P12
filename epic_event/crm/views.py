@@ -76,7 +76,6 @@ class EventViewSet(ModelViewSet):
     def get_object(self):
         obj = get_object_or_404(self.get_queryset(), pk=self.kwargs["pk"])
         self.check_object_permissions(self.request, obj)
-        print(obj)
         return obj
 
     def get_permissions(self):
@@ -143,7 +142,6 @@ class ContractViewSet(ModelViewSet):
     def get_object(self):
         obj = get_object_or_404(self.get_queryset(), pk=self.kwargs["pk"])
         self.check_object_permissions(self.request, obj)
-        print(obj)
         return obj
 
     def get_queryset(self):
@@ -153,7 +151,6 @@ class ContractViewSet(ModelViewSet):
         Should also get all contracts for a specific client
         """
         user = self.request.user
-        print(user)
         contract_id = self.request.GET.get(id)
 
         if contract_id is not None:
@@ -238,7 +235,6 @@ class ClientViewSet(ModelViewSet):
     def get_object(self):
         obj = get_object_or_404(self.get_queryset(), pk=self.kwargs["pk"])
         self.check_object_permissions(self.request, obj)
-        print(obj)
         return obj
 
     # def get_serializer_class(self):

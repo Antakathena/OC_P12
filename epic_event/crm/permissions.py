@@ -20,14 +20,12 @@ class SalesTeamPermission(BasePermission):
 
     def has_object_permission(self, request, view, obj):
         """"""
-        print(request.user.team)
         if request.user.team == "sales":
             return True
         elif request.user.is_authenticated and request.method in SAFE_METHODS:
             return True
         else:
             return False
-
         # return bool(request.user.team == "sales")
 
 
@@ -49,18 +47,9 @@ class SupportTeamPermission(BasePermission):
 class InChargeOfClientPermission(BasePermission):
     """Autorisation pour le responsable de cet élément : accès à delete et put"""
     message = "Seul la personne en charge peut modifier ou supprimer cet élément"
-    # TODO check that this permission is really working : update client unauthorized
-    # TODO : retirer les prints
-    # TODO : question : what is the upside to have the decorator before a static method?
 
     def has_object_permission(self, request, view, obj):
         """Est chargé de cet élément (client/contrat si sales_contact, évènement si support_contact"""
-        print(f'request: {request.user}')
-        print(f'view: {view}')
-        print(f'obj: {obj}')
-        print(f'obj: {obj.sales_contact}')
-
-        # if isinstance(obj, Client):
         if obj.sales_contact.id == request.user.id:  # modifié
             return True
         elif request.user.is_authenticated and request.method in SAFE_METHODS:
@@ -72,16 +61,9 @@ class InChargeOfClientPermission(BasePermission):
 class InChargeOfEventPermission(BasePermission):
     """Autorisation pour le responsable de cet élément : accès à delete et put"""
     message = "Seul la personne en charge peut modifier ou supprimer cet élément"
-    # TODO check that this permission is really working
-    # TODO : retirer les prints
-    # TODO : question : what is the upside to have the decorator before a static method?
 
     def has_object_permission(self, request, view, obj):
         """Est chargé de cet élément (client/contrat si sales_contact, évènement si support_contact"""
-        print(f'request: {request}')
-        print(f'view: {view}')
-        print(f'obj: {obj}')
-
         if obj.support_contact == request.user:
             return True
         elif request.user.is_authenticated and request.method in SAFE_METHODS:

@@ -11,12 +11,12 @@ from .serializers import CustomUserSerializer, RegisterUserSerializer
 
 
 class AdminUserViewset(viewsets.ModelViewSet):
-    """Vue réservée aux administrateurs
+    """Vue réservée aux administrateurs.
     Elle permet toutes les actions du CRUD sur les users
     """
-    serializer_class = CustomUserSerializer
+    serializer_class = RegisterUserSerializer  # au lieu de CustomUserSerializer
     queryset = users = CustomUser.objects.all()
-    # permission_classes = (AllowAny,)
+    permission_classes = (IsAuthenticated, IsAdminUser)
 
 
 class UserView(APIView):
@@ -29,7 +29,7 @@ class UserView(APIView):
         return Response(serializer.data)
 
 
-class RegisterUserView(APIView):
+class RegisterUserView(APIView):  # peut-être pas utile puisque seuls les manager peuvent le faire (dc AdminUserViewset)
     """ create a new user """
     # permission_classes = (AllowAny,)
     serializer_class = RegisterUserSerializer
@@ -43,11 +43,3 @@ class RegisterUserView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-class AdminUserViewset(viewsets.ModelViewSet):
-    """Vue réservée aux administrateurs
-    Elle permet toutes les actions du CRUD sur les users
-    """
-    serializer_class = CustomUserSerializer
-    queryset = users = CustomUser.objects.all()
-    permission_classes = (IsAuthenticated, IsAdminUser)

@@ -4,20 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ed24f16-294a-413c-af81-dd9cf5b74694" name="Changes" comment="app crm: views, urls, permissions in progress">
+    <list default="true" id="3ed24f16-294a-413c-af81-dd9cf5b74694" name="Changes" comment="admin.py customisé &amp; correction du hashage des passwords">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/crm/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/crm/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/crm/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/epic_event/crm/permissions.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/crm/permissions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/crm/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/crm/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/crm/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/crm/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/epic_event/crm/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/crm/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/epic_event/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/epic_event/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/users/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/users/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/users/managers.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/users/managers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/users/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/users/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/users/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/users/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/epic_event/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,8 +37,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\galatee\OpenClassroom\P12\tests\test_users\unit" />
+      <recent name="C:\Users\galatee\OpenClassroom\P12\tests\test_users" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -66,7 +63,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653389076477</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="admin.py customisé &amp; correction du hashage des passwords">
+      <created>1653591622760</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1653591622760</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -85,6 +89,17 @@
     <MESSAGE value="changes to gitignore" />
     <MESSAGE value="models, admin, serializers done for app users &amp; app crm" />
     <MESSAGE value="app crm: views, urls, permissions in progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="app crm: views, urls, permissions in progress" />
+    <MESSAGE value="admin.py customisé &amp; correction du hashage des passwords" />
+    <option name="LAST_COMMIT_MESSAGE" value="admin.py customisé &amp; correction du hashage des passwords" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/epic_event/users/views.py</url>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
