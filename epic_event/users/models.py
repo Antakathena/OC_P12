@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from datetime import date
 from django.contrib.auth.models import AbstractUser, PermissionsMixin, UserManager
 
 from users.managers import CustomUserManager
@@ -17,14 +18,15 @@ class CustomUser(AbstractUser, PermissionsMixin):
         ("support", 'support')
     )
     team = models.CharField(max_length=10, choices=TEAM_CHOICES, default="management")
-
     email = models.EmailField(max_length=40, unique=True)
     username = models.CharField(max_length=30, unique=True)
     first_name = models.CharField(max_length=30)  # il faut choisir : blank = True ou required field?
     last_name = models.CharField(max_length=30)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    date_joined = models.DateTimeField(default=timezone.now)
+    date_joined = models.DateField(default=date.today)
+    # avant : models.DateTimeField(default=timezone.now)
+    # si ça ne casse pas tout changer pour : models.DateField(default=date.today)
 
     objects = CustomUserManager()
     # objects = UserManager()

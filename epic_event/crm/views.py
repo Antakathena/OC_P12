@@ -1,12 +1,14 @@
 from django.shortcuts import get_object_or_404
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes  # pour aller avec le décorateur APIView
 from rest_framework.response import Response
 
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import (
+    AllowAny,
     IsAuthenticated,
     IsAdminUser,
 )
+
 
 from . import serializers
 from .models import (
@@ -27,10 +29,31 @@ from .permissions import (
     InChargeOfEventPermission,
 )
 
+import logging
+logger = logging.getLogger("django")
+
+# logger = logging.getLogger(__name__)
+# logger.setLevel(logging.DEBUG)
+#
+# formatter = logging.Formatter('%(asctime)s:%(name)s:%(message)s')
+#
+# file_handler = logging.FileHandler('debug.log')
+# file_handler.setlevel(logging.ERROR)
+# file_handler.setformatter(formatter)
+#
+# stream_handler = logging.StreamHandler()
+# stream_handler.setFormatter(formatter)
+#
+# logger.addHandler(file_handler)
+# logger.addHandler(stream_handler)
+
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def api_overview(request):
     """ Aperçu des ENDPOINTS demandés sur une vue simple."""
+    # à transformer en modelView pour plus de coherence ?
+    logger.info("Hello from api-overview. How is loggin going?")
 
     infos = {
         "Bienvenue dans l'API Epic-Event.\
@@ -40,10 +63,13 @@ def api_overview(request):
         "connexion": "  /login/, méthode : POST",
         "déconnexion": "  /logout/, GET",
 
-        "créer un USER (employé)": "  /users/, méthode : POST",
-        "récupérer les détails d'un USER (employé)": r"  /users/{id}/, méthode : GET",
-        "mettre à jour un USER (employé)": r"  /users/{id}/, méthode :  PUT",
-        "supprimer un USER (employé)": r"  /users/{id}/, méthode : DELETE",
+        "récupérer la liste d'un USER (employé)": r"  /employees/, méthode : GET",
+        "récupérer les détails d'un USER (employé)": r"  /employees/{id}/, méthode : GET",
+
+        "manager, créer un USER (employé)": "  /admin-employee/, méthode : POST",
+
+        "manager, mettre à jour un USER (employé)": r"  /admin-employee/{id}/, méthode :  PUT",
+        "manager, supprimer un USER (employé)": r"  /admin-employee/{id}/, méthode : DELETE",
 
         "créer un CLIENT": "  /clients/, méthode : POST",
         "récupérer les détails d'un CLIENT": r"  /clients/{id}/, méthode : GET",
@@ -76,16 +102,20 @@ class EventViewSet(ModelViewSet):
     def get_object(self):
         obj = get_object_or_404(self.get_queryset(), pk=self.kwargs["pk"])
         self.check_object_permissions(self.request, obj)
+        # logger.debug('get object')
         return obj
 
     def get_permissions(self):
         """ gets permissions
-        Instantiates and returns the list of permissions that this view requires.
-        # pour get : authenticated, pour post : + salesTeam, pour delete et put : IsInChargePermission
+        for get : authenticated is enough
+        to post : Events are created when their contract is registered,
+            so "create" should be used only if deleted by mistake
+        to put : support_contact if assigned, else management to assign someone
         """
         # here is determined what action can be performed, according to authorisation:
         if self.action == 'create':
-            permission_classes = [IsAuthenticated, SupportTeamPermission, ]
+            permission_classes = [IsAuthenticated, IsAdminUser, ]
+
         elif self.action == 'retrieve':
             permission_classes = [IsAuthenticated, ]
         elif self.action == 'list':
@@ -225,7 +255,7 @@ class ClientViewSet(ModelViewSet):
     """
     serializer_class = ClientSerializer
     # serializer_action_classes = {
-    #     'list': serializers.ClientListSerializer
+    #     'list': serializers.ClientListSerializer,
     # }
     # ordering_fields = ("last_name", "sales_contact")
     # queryset = Client.objects.all().order_by("last_name") ds get_queryset not working as well
@@ -237,6 +267,11 @@ class ClientViewSet(ModelViewSet):
         self.check_object_permissions(self.request, obj)
         return obj
 
+    def get_serializer_context(self):  # pour dire au serializer quelle est la méthode CRUD
+        context = super(ClientViewSet, self).get_serializer_context()
+        context.update({"request": self.request})
+        return context
+
     # def get_serializer_class(self):
     #     try:
     #         return self.serializer_action_classes[self.action]
@@ -246,7 +281,9 @@ class ClientViewSet(ModelViewSet):
     def get_permissions(self):
         """ gets permissions
         Instantiates and returns the list of permissions that this view requires.
-        # pour get : authenticated, pour post : + salesTeam, pour delete et put : IsInChargePermission
+        to get : authenticated is enough
+        to post : sales-team member
+        to put : sales_contact if assigned, else management to assign someone
         """
         # here is determined what action can be performed, according to authorisation:
         if self.action == 'create':

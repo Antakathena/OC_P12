@@ -4,19 +4,19 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
-from .views import UserView, RegisterUserView, AdminUserViewset
+from .views import EmployeeView, RegisterEmployeeView, AdminEmployeeViewset
 
 app_name = 'users'  # (pour éventuellement utiliser namespace dans les urls)
 
 urlpatterns = [
     path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('users/', UserView.as_view()),
-    path('signup/', RegisterUserView.as_view()),
+    path('employees/', EmployeeView.as_view()),
+    path('signup/', RegisterEmployeeView.as_view()),
 ]
 
-# Celui-ci c'est juste pour étudier le syst. et avoir un accès admin pour gérer les utilisateurs :
+# Celui-ci c'est juste pour avoir un accès admin pour gérer les utilisateurs dans l'UI:
 router = DefaultRouter()
-router.register('admin-users', AdminUserViewset, basename='admin-users')
+router.register('admin-employees', AdminEmployeeViewset, basename='admin-users')
 
 urlpatterns += router.urls

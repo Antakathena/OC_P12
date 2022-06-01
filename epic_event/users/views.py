@@ -1,3 +1,4 @@
+import logging
 from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -10,7 +11,7 @@ from .models import CustomUser
 from .serializers import CustomUserSerializer, RegisterUserSerializer
 
 
-class AdminUserViewset(viewsets.ModelViewSet):
+class AdminEmployeeViewset(viewsets.ModelViewSet):
     """Vue réservée aux administrateurs.
     Elle permet toutes les actions du CRUD sur les users
     """
@@ -19,7 +20,7 @@ class AdminUserViewset(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated, IsAdminUser)
 
 
-class UserView(APIView):
+class EmployeeView(APIView):
     """ List all users """
 
     def get(self, *args, **kwargs):
@@ -29,7 +30,8 @@ class UserView(APIView):
         return Response(serializer.data)
 
 
-class RegisterUserView(APIView):  # peut-être pas utile puisque seuls les manager peuvent le faire (dc AdminUserViewset)
+class RegisterEmployeeView(APIView):
+    # peut-être pas utile puisque seuls les manager peuvent le faire (dc AdminEmployeeViewset)
     """ create a new user """
     # permission_classes = (AllowAny,)
     serializer_class = RegisterUserSerializer

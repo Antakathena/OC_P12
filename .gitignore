@@ -4,3 +4,4 @@
 .env
 tests
 db.sqlite3
+static

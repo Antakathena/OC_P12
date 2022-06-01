@@ -49,13 +49,21 @@ class InChargeOfClientPermission(BasePermission):
     message = "Seul la personne en charge peut modifier ou supprimer cet élément"
 
     def has_object_permission(self, request, view, obj):
+        # TODO : même surcharge 2 fois, -> fonction et changer sales_contact/support_contact en argument?
         """Est chargé de cet élément (client/contrat si sales_contact, évènement si support_contact"""
-        if obj.sales_contact.id == request.user.id:  # modifié
-            return True
-        elif request.user.is_authenticated and request.method in SAFE_METHODS:
-            return True
-        else:
-            return False
+        if obj.sales_contact:  # modifié
+            if obj.sales_contact.id == request.user.id:
+                return True
+            elif request.user.is_authenticated and request.method in SAFE_METHODS:
+                return True
+            else:
+                return False
+        else:  # pas de support_contact attribué
+            if request.user.team == "management":
+                return True
+            else:
+                return False
+
 
 
 class InChargeOfEventPermission(BasePermission):
@@ -64,9 +72,15 @@ class InChargeOfEventPermission(BasePermission):
 
     def has_object_permission(self, request, view, obj):
         """Est chargé de cet élément (client/contrat si sales_contact, évènement si support_contact"""
-        if obj.support_contact == request.user:
-            return True
-        elif request.user.is_authenticated and request.method in SAFE_METHODS:
-            return True
-        else:
-            return False
+        if obj.support_contact:
+            if obj.support_contact.id == request.user.id:
+                return True
+            elif request.user.is_authenticated and request.method in SAFE_METHODS:
+                return True
+            else:
+                return False
+        else:  # pas de support_contact attribué
+            if request.user.team == "management":
+                return True
+            else:
+                return False

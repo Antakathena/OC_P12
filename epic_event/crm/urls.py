@@ -29,9 +29,10 @@ clients_router.register('contracts', ContractViewSet, basename='client-contracts
 
 urlpatterns = [
     path('api-overview', views.api_overview, name="api-overview"),
+    # TODO: pourquoi qd j'essaie juste '' comme sur P10 on a pas api-overview mais
+    #    "admin-employees": "http://127.0.0.1:8000/admin-employees/"?
     path('', include(router.urls)),
     path('', include(clients_router.urls)),
-    # path('', include(issues_router.urls)),
 ]
 
 # Celui-ci c'est juste pour étudier le syst. et avoir un accès admin pour gérer les utilisateurs :

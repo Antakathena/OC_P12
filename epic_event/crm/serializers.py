@@ -5,6 +5,7 @@ from .models import Client, Contract, Event
 class ClientListSerializer(serializers.ModelSerializer):
     client_id = serializers.ReadOnlyField(source='id')
     sales_contact = serializers.ReadOnlyField(source='sales_contact.username')
+
     # nb : on choisit ici de donner le nom (username) du commercial plutôt que l'id
 
     class Meta:
@@ -17,23 +18,36 @@ class ClientSerializer(serializers.ModelSerializer):
     client_id = serializers.ReadOnlyField(source='id')
     status = serializers.ChoiceField(choices=Client.CHOICES)
     sales_contact = serializers.ReadOnlyField(source='sales_contact.username')
+
     # nb : on choisit ici de donner le nom (username) du commercial plutôt que l'id
 
     class Meta:
         model = Client
         fields = '__all__'
 
+    def validate(self, data):
+        # TODO on ne peut pas update. Essayer sans doubler le serializer
+        if self.context['request'].method == 'POST':
+            # est-ce qu'on peut mettre request ds serializer?, faut-il un else?
+            if Client.objects.filter(
+                first_name=data['first_name'].capitalize(),
+                    last_name=data['last_name'].upper()).exists():
+                error_message = 'The client is already registered.'
+                raise serializers.ValidationError(error_message)
+            else:
+                return super().validate(data)
+        else:
+            return super().validate(data)
+
+    # TODO : le sales_contact doit être un membre de l'équipe sales
+    # def get_salesforce(self, obj):
+    #     salesforce = CustomUser.objects.filter(CustomUser.team = "sales")
+    #     return salesforce
+
 
 class ContractSerializer(serializers.ModelSerializer):
     contract_id = serializers.ReadOnlyField(source='id')
-    # event = serializers.ReadOnlyField(source='event_id')
-    # l'évent lié doit être créé en même temps que le contrat est enregistré (cf contract model)
 
-    # Got a `TypeError` when calling `Contract.objects.create()`.
-    # This may be because you have a writable field on the serializer class
-    # that is not a valid argument to `Contract.objects.create()`.
-    # You may need to make the field read-only,
-    # or override the ContractSerializer.create() method to handle this correctly.
     class Meta:
         model = Contract
         fields = ['contract_id', 'object', 'date_signature', 'client']
@@ -41,6 +55,9 @@ class ContractSerializer(serializers.ModelSerializer):
 
 class EventSerializer(serializers.ModelSerializer):
     event_id = serializers.ReadOnlyField(source='id')
+    contract_id = serializers.ReadOnlyField()
+
+
 
     class Meta:
         model = Event
