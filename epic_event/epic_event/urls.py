@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+admin.site.site_header = 'Welcome to Epic-Event CRM administration'      # default: "Django Administration"
+admin.site.index_title = 'Epic-Event CRM'                  # default: "Site administration"
+admin.site.site_title = 'Epic-Event administration'  # default: "Django site admin
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),

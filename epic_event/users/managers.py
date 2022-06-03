@@ -25,7 +25,8 @@ class CustomUserManager(BaseUserManager):
             with transaction.atomic():  # on essaye avec si ça plante, retirer
                 user = self.model(email=email, **extra_fields)  # self.normalize_email(email)
                 user.set_password(password)
-                user.is_staff = True if user.team == "management" else False  # on essaie
+                # user.is_staff = True if user.team == "management" else False
+                # → à utiliser si on choisit de ne laisser l'admin qu'aux managers et superusers
                 user.save(using=self._db)
                 return user
         except Exception as e:
@@ -33,7 +34,7 @@ class CustomUserManager(BaseUserManager):
             raise e
 
     def create_user(self, email, password=None, **extra_fields):
-        # extra_fields.setdefault('is_staff', False)  # retiré pour faire echo à l.28 ajoutée
+        extra_fields.setdefault('is_staff', True)  # modifier pour false si on active la ligne 28
         extra_fields.setdefault('is_superuser', False)
         return self._create_user(email, password=password, **extra_fields)
 

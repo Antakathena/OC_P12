@@ -2,6 +2,8 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from datetime import date
+from django.db import IntegrityError
+from django.db.models.functions import Upper
 
 
 class Client(models.Model):
@@ -29,7 +31,7 @@ class Client(models.Model):
         blank=True,
         null=True
         # null=True autorise l'absence de commercial désigné (départ du commercial en charge par exemple)
-        # TODO il faudrait que ça envoie un signal/une alerte au management pour assigner qq'un
+        # TODO il faudrait que ça envoie un signal/une alerte au management pour assigner qq'un : filter dans admin?
     )
     status = models.CharField(
         max_length=8,
@@ -37,16 +39,24 @@ class Client(models.Model):
         default="prospect"
     )
 
+    class Meta:
+        constraints = [
+            (models.UniqueConstraint(fields=["first_name", "last_name"], name="unique_client"))
+        ]
+
     def save(self, *args, **kwargs):
-        # + try/except:
-        # # TODO vérifier la tournure pour éviter 2 fois le même client (et l'appliquer à User après check)
-        # if not Client.objects.filter(first_name=self.first_name).filter(last_name=self.last_name).exists():
+        self.first_name = self.first_name.capitalize()
         self.last_name = self.last_name.upper()
-        super().save(*args, **kwargs)
-        return self
+        try:
+            if not Client.objects.filter(first_name=self.first_name).filter(last_name=self.last_name).exists():
+                super().save(*args, **kwargs)
+                return self
+        except IntegrityError as error:
+            raise error
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name} ( {self.status}: id. {self.id} )"
+        return f"{self.first_name} {self.last_name} ( {self.status}: id. {self.id} )," \
+               f" sales_contact : {self.sales_contact}"
 
 
 class Contract(models.Model):
@@ -112,4 +122,4 @@ class Event(models.Model):
     )
 
     def __str__(self):
-        return f"{self.name}(event {self.id})"
+        return f"{self.name}(event {self.id}), support_contact : {self.support}"

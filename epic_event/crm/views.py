@@ -59,17 +59,15 @@ def api_overview(request):
         "Bienvenue dans l'API Epic-Event.\
             Vous être connecté en tant que": f"{request.user}",
 
-        "inscription": "  /signup/, méthode : POST",
         "connexion": "  /login/, méthode : POST",
         "déconnexion": "  /logout/, GET",
 
         "récupérer la liste d'un USER (employé)": r"  /employees/, méthode : GET",
         "récupérer les détails d'un USER (employé)": r"  /employees/{id}/, méthode : GET",
 
-        "manager, créer un USER (employé)": "  /admin-employee/, méthode : POST",
-
-        "manager, mettre à jour un USER (employé)": r"  /admin-employee/{id}/, méthode :  PUT",
-        "manager, supprimer un USER (employé)": r"  /admin-employee/{id}/, méthode : DELETE",
+        "manager_ créer un USER (employé)": "  /admin-employee/, méthode : POST",
+        "manager_ mettre à jour un USER (employé)": r"  /admin-employee/{id}/, méthode :  PUT",
+        "manager_ supprimer un USER (employé)": r"  /admin-employee/{id}/, méthode : DELETE",
 
         "créer un CLIENT": "  /clients/, méthode : POST",
         "récupérer les détails d'un CLIENT": r"  /clients/{id}/, méthode : GET",
@@ -102,7 +100,7 @@ class EventViewSet(ModelViewSet):
     def get_object(self):
         obj = get_object_or_404(self.get_queryset(), pk=self.kwargs["pk"])
         self.check_object_permissions(self.request, obj)
-        # logger.debug('get object')
+        logger.info(f'get object : {obj}')
         return obj
 
     def get_permissions(self):
@@ -184,12 +182,11 @@ class ContractViewSet(ModelViewSet):
         contract_id = self.request.GET.get(id)
 
         if contract_id is not None:
-            # TODO : verifier que le queryset est correct et sert à quelque chose
             queryset = Contract.objects.filter(id=contract_id)
 
             contract = self.queryset.get(
                 contract_id=contract_id,
-                # client_id=self.kwargs['client_pk']  # retenir le pk pour les essais ou passer par last_name
+                # client_id=self.kwargs['client_pk']
             )
             return contract
         else:
@@ -227,11 +224,6 @@ class ContractViewSet(ModelViewSet):
         serializer = ContractSerializer(project)
         return Response(serializer.data)
 
-    # comment ajouter un message pour dire que event lié au contrat créé?
-    # def create(self, request, *args, **kwargs):
-    #     super().create(*args, **kwargs)
-    #     return Response({'success': 'Evenement créé, il faut lui attribuer un support'}, status=status.HTTP_201_Created)
-
 
 class AdminClientViewSet(ModelViewSet):
     """Une vue client améliorée
@@ -239,7 +231,6 @@ class AdminClientViewSet(ModelViewSet):
     voir uniquement leurs clients et accéder à leurs contrats
     Penser à l'ajouter aux imports dans urls.py
     """
-    # TODO : implement or delete
     pass
 
 

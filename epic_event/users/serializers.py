@@ -38,7 +38,13 @@ class RegisterUserSerializer(serializers.ModelSerializer):
             last_name=validated_data['last_name'],
             email=validated_data['email'],
             is_active=True,
-            # is_staff=(validated_data['team'] == 'management')  # ajouté mais ne marchait pas cf manager.py?
         )
         return user
         # return User.objects.create_user(**validated_data)
+
+
+class ChangePasswordSerializer(serializers.Serializer):
+    model = CustomUser
+
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)

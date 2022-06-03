@@ -74,6 +74,7 @@ class UserAdmin(BaseUserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
+    # https://www.naif.com.kw/naifchicken/django/contrib/auth/admin.py
     list_display = ('last_name', 'first_name', 'email', 'team')
     list_filter = ('team',)
     fieldsets = (
@@ -85,18 +86,20 @@ class UserAdmin(BaseUserAdmin):
             'last_name',
             'is_active',
             'is_staff',
+            'is_superuser',
             'date_joined'
         )}),
-        # ('Personal info', {'fields': ('date_of_birth',)}),
-        ('Permissions', {'fields': ('team',)}),
+        ('Permissions', {'fields': ('team', 'groups', 'user_permissions')}),  # modif: plutôt que juste team
+        # poss + 'is_staff' mais à retirer d'ailleurs et 'user_permissions' pour + précis que 'groups'
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
     # overrides get_fieldsets to use this attribute when creating a user.
+
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
             'fields': ('email', 'password1', 'password2', 'team', 'username', 'first_name', 'last_name', 'is_active',
-                       'is_staff')
+                       'is_staff', 'is_superuser')
         }
         ),
     )
@@ -104,8 +107,24 @@ class UserAdmin(BaseUserAdmin):
     ordering = ('email',)
     filter_horizontal = ()
 
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        is_superuser = request.user.is_superuser
+        disabled_fields = set()  # type: Set[str]
+
+        if not is_superuser:
+            disabled_fields |= {
+                'is_superuser',
+            }
+
+        for f in disabled_fields:
+            if f in form.base_fields:
+                form.base_fields[f].disabled = True
+
+        return form
+
 # Now register the new UserAdmin...
 admin.site.register(CustomUser, UserAdmin)
 # ... and, since we're not using Django's built-in permissions,
 # unregister the Group model from admin.
-admin.site.unregister(Group)
+# admin.site.unregister(Group)  # TODO : pb là pour avoir les groupes?

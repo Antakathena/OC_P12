@@ -58,7 +58,7 @@ class InChargeOfClientPermission(BasePermission):
                 return True
             else:
                 return False
-        else:  # pas de support_contact attribué
+        else:  # pas de sales_contact attribué
             if request.user.team == "management":
                 return True
             else:

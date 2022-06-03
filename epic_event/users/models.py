@@ -41,5 +41,10 @@ class CustomUser(AbstractUser, PermissionsMixin):
         super().save(*args, **kwargs)
         return self
 
+    class Meta:
+        constraints = [
+            (models.UniqueConstraint(fields=["first_name", "last_name"], name="unique_employee"))
+        ]
+
     def __str__(self):
         return f"{self.username}, {self.team} (id:{self.id})"
