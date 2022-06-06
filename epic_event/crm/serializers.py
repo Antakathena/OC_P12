@@ -5,7 +5,6 @@ from .models import Client, Contract, Event
 class ClientListSerializer(serializers.ModelSerializer):
     client_id = serializers.ReadOnlyField(source='id')
     sales_contact = serializers.ReadOnlyField(source='sales_contact.username')
-
     # nb : on choisit ici de donner le nom (username) du commercial plutôt que l'id
 
     class Meta:
@@ -18,7 +17,6 @@ class ClientSerializer(serializers.ModelSerializer):
     client_id = serializers.ReadOnlyField(source='id')
     status = serializers.ChoiceField(choices=Client.CHOICES)
     sales_contact = serializers.ReadOnlyField(source='sales_contact.username')
-
     # nb : on choisit ici de donner le nom (username) du commercial plutôt que l'id
 
     class Meta:
@@ -26,9 +24,7 @@ class ClientSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def validate(self, data):
-        # TODO on ne peut pas update. Essayer sans doubler le serializer
         if self.context['request'].method == 'POST':
-            # est-ce qu'on peut mettre request ds serializer?, faut-il un else?
             if Client.objects.filter(
                 first_name=data['first_name'].capitalize(),
                     last_name=data['last_name'].upper()).exists():
@@ -38,11 +34,6 @@ class ClientSerializer(serializers.ModelSerializer):
                 return super().validate(data)
         else:
             return super().validate(data)
-
-    # TODO : le sales_contact doit être un membre de l'équipe sales
-    # def get_salesforce(self, obj):
-    #     salesforce = CustomUser.objects.filter(CustomUser.team = "sales")
-    #     return salesforce
 
 
 class ContractSerializer(serializers.ModelSerializer):
@@ -56,8 +47,6 @@ class ContractSerializer(serializers.ModelSerializer):
 class EventSerializer(serializers.ModelSerializer):
     event_id = serializers.ReadOnlyField(source='id')
     contract_id = serializers.ReadOnlyField()
-
-
 
     class Meta:
         model = Event

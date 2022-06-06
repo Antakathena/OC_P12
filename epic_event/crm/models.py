@@ -3,7 +3,6 @@ from django.db import models
 from django.utils import timezone
 from datetime import date
 from django.db import IntegrityError
-from django.db.models.functions import Upper
 
 
 class Client(models.Model):
@@ -31,7 +30,6 @@ class Client(models.Model):
         blank=True,
         null=True
         # null=True autorise l'absence de commercial désigné (départ du commercial en charge par exemple)
-        # TODO il faudrait que ça envoie un signal/une alerte au management pour assigner qq'un : filter dans admin?
     )
     status = models.CharField(
         max_length=8,
@@ -84,14 +82,13 @@ class Contract(models.Model):
         surcharge de la fonction save() pour enregistrer
         un évenement lié au contrat
         """
-        # TODO : si un client 'prospect' signe un contrat, il devient 'client' xxx
 
         # à ce moment le event_id n'existe pas
         old_event_id = self.id
         # puis on le créé avec le super().save
         super().save(*args, **kwargs)
         if self.client.status == "prospect":
-            self.client.status = "client"  # TODO prospect devient client (ne marche pas comme çà)
+            self.client.status = "client"
         if old_event_id is None:
             Event.objects.create(name=self.object, contract=self, client=self.client)
 
@@ -113,7 +110,6 @@ class Event(models.Model):
         blank=True,
         null=True
         # null=True autorise l'absence de support désigné lors de la création (contrat enregistré)
-        # TODO il faudrait que ça envoie un signal/une alerte au management pour assigner qq'un
     )
     contract = models.ForeignKey(
         to=Contract,

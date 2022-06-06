@@ -24,10 +24,6 @@ class AdminEmployeeViewset(viewsets.ModelViewSet):
     queryset = users = CustomUser.objects.all()
     permission_classes = (IsAuthenticated, IsAdminUser)
 
-    # TODO : problème : pour actualiser (update/PUT) un employé on doit rentrer son mot de passe
-    # TODO :par ailleurs, un employé devrait pouvoir changer son mot de passe (sur son login?) // register du P10?
-
-
 class EmployeeView(APIView):
     """ List all users """
 

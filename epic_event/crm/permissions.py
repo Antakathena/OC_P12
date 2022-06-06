@@ -49,7 +49,6 @@ class InChargeOfClientPermission(BasePermission):
     message = "Seul la personne en charge peut modifier ou supprimer cet élément"
 
     def has_object_permission(self, request, view, obj):
-        # TODO : même surcharge 2 fois, -> fonction et changer sales_contact/support_contact en argument?
         """Est chargé de cet élément (client/contrat si sales_contact, évènement si support_contact"""
         if obj.sales_contact:  # modifié
             if obj.sales_contact.id == request.user.id:
