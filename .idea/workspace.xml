@@ -4,13 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ed24f16-294a-413c-af81-dd9cf5b74694" name="Changes" comment="déplacement du readme vers main">
+    <list default="true" id="3ed24f16-294a-413c-af81-dd9cf5b74694" name="Changes" comment="retrait de certains commentaires">
+      <change beforePath="$PROJECT_DIR$/.idea/P12.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/P12.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/epic_event/crm/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/crm/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/epic_event/crm/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/crm/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/epic_event/crm/permissions.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/crm/permissions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/crm/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/crm/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/crm/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/crm/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/epic_event/crm/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/crm/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/epic_event/epic_event/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/epic_event/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/epic_event/users/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/users/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/epic_event/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/users/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/epic_event/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,11 +44,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/epic_event" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/epic_event/users" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\galatee\OpenClassroom\P12\epic_event\users" />
       <recent name="C:\Users\galatee\OpenClassroom\P12\epic_event" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -156,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654518648430</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="retrait de certains commentaires">
+      <created>1654520091534</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1654520091534</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -183,6 +194,7 @@
     <MESSAGE value="unique_employee and unique_client" />
     <MESSAGE value="ajout readme" />
     <MESSAGE value="déplacement du readme vers main" />
-    <option name="LAST_COMMIT_MESSAGE" value="déplacement du readme vers main" />
+    <MESSAGE value="retrait de certains commentaires" />
+    <option name="LAST_COMMIT_MESSAGE" value="retrait de certains commentaires" />
   </component>
 </project>

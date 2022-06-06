@@ -42,6 +42,7 @@ class CustomUser(AbstractUser, PermissionsMixin):
         return self
 
     class Meta:
+        verbose_name = 'Employee'
         constraints = [
             (models.UniqueConstraint(fields=["first_name", "last_name"], name="unique_employee"))
         ]

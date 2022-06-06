@@ -47,51 +47,10 @@ class ClientAdmin(GuardedModelAdmin):
             return qs
         if request.user.team == "management":
             return qs
+        logger.info(f"info message : {request.user} était sur la page client")
         return qs.filter(sales_contact=request.user)
         # limite la visibilité à leurs seuls clients
-        return super().get_queryset(request)
-        logger.info(f"on veut l'objet_client :{obj}, et le user : {request.user}")
 
-    # def has_permission(self, request, obj, action):
-    #     opts = self.opts
-    #     code_name = f'{action}_{opts.model_name}'
-    #     if obj:
-    #         return request.user.has_perm(f'{opts.app_label}.{code_name}', obj)
-
-    # def has_add_permission(self, request):
-    #     if request.user.is_superuser or request.user.team == 'sales':
-    #         return True
-    #     else:
-    #         return False
-    #
-    # def has_delete_permission(self, request, obj=None):
-    #     if request.user.is_superuser:
-    #         return True
-    #     # if request.user.id == obj.sales_contact.id:
-    #     #     return True
-    #     else:
-    #         return False
-    #     # return obj is None or obj.sales_contact == request.user
-    #
-    #
-    # def has_change_permission(self, request, obj=None):
-    #     if request.user.is_superuser:
-    #         return True
-    #     # if request.user.id == obj.sales_contact.id:
-    #     #     return True
-    #     else:
-    #         return False
-    #     # return self.has_permission(request, obj, 'change')
-
-        # # logger.info(f'on veut le sales_contact du client : {obj.sales_contact}')
-        # if request.user.groups.filter(name='sales'):
-        #     # and obj.sales_contact.id == request.user.id:
-        #     # logger.info(f'on veut récupérer les infos de obj pour admin{request.user.groups}')
-        #     return True
-        # else:
-        #     # logger.info(f'on veut récupérer les infos de obj pour admin{request.user.groups}')
-        #     return False
-        # # return obj is None or obj.sales_contact == request.user
 
 @admin.register(Contract)
 class ContractAdmin(GuardedModelAdmin):
@@ -106,9 +65,8 @@ class ContractAdmin(GuardedModelAdmin):
             return qs
         if request.user.team == "management":
             return qs
-        return qs.filter(sales_contact=request.user)
-        return super().get_queryset(request)
-        logger.info(f"on veut l'objet_client :{obj}, et le user : {request.user}")
+        logger.info(f"info message : {request.user} était sur la page contrat")
+        return qs.filter(client__sales_contact=request.user)
 
 
 @admin.register(Event)
@@ -124,9 +82,9 @@ class EventAdmin(GuardedModelAdmin):
             return qs
         if request.user.team == "management":
             return qs
+        logger.info(f"info message : {request.user} était sur la page évènement")
         return qs.filter(support=request.user)
-        return super().get_queryset(request)
-        logger.info(f"on veut l'objet_client :{obj}, et le user : {request.user}")
+
 # admin.site.register(Client)
 # admin.site.register(Contract)
 # admin.site.register(Event)

@@ -21,7 +21,6 @@ class UserCreationForm(forms.ModelForm):
     class Meta:
         model = CustomUser
         fields = '__all__'
-        # ('email', 'date_of_birth')
 
     def clean_password2(self):
         # Check that the two password entries match
@@ -123,6 +122,8 @@ class UserAdmin(BaseUserAdmin):
 
         return form
 
+
 # Now register the new UserAdmin...
 admin.site.register(CustomUser, UserAdmin)
+
 

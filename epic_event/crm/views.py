@@ -23,6 +23,7 @@ from .serializers import (
     ContractSerializer,
 )
 from .permissions import (
+    ManagementTeamPermission,
     SalesTeamPermission,
     SupportTeamPermission,
     InChargeOfClientPermission,
@@ -30,14 +31,15 @@ from .permissions import (
 )
 
 import logging
-logger = logging.getLogger("django")
+logger = logging.getLogger("CRM")
+
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def api_overview(request):
     """ Aperçu des ENDPOINTS demandés sur une vue simple."""
     # à transformer en modelView pour plus de coherence ?
-    logger.info("Hello from api-overview. How is loggin going?")
+    logger.info("\"Hello from api-overview. How is loggin going?\"")
 
     infos = {
         "Bienvenue dans l'API Epic-Event.\
@@ -97,7 +99,6 @@ class EventViewSet(ModelViewSet):
         # here is determined what action can be performed, according to authorisation:
         if self.action == 'create':
             permission_classes = [IsAuthenticated, IsAdminUser, ]
-
         elif self.action == 'retrieve':
             permission_classes = [IsAuthenticated, ]
         elif self.action == 'list':
@@ -116,9 +117,6 @@ class EventViewSet(ModelViewSet):
             queryset = Event.objects.filter(id=event_id)
         else:
             queryset = Event.objects.all()
-            # Sur le modèle du P10, un support devrait pouvoir accéder à ses events
-            # utiliser l'attribut FK support_contact de client ? comment ?
-            # queryset = Projects.filter(contributor__user=self.request.user)
         return queryset
 
     def perform_create(self, serializer):
@@ -195,7 +193,7 @@ class ContractViewSet(ModelViewSet):
         """designate creator as author of the instance"""
         serializer.save(sales_contact=self.request.user)
 
-    def list(self, request, ):
+    def list(self, request, pk=None):
         """used by nested urls"""
         queryset = Contract.objects.all()
         serializer = ContractSerializer(queryset, many=True)
@@ -229,12 +227,6 @@ class ClientViewSet(ModelViewSet):
     à l'équipe de gestion pour attribuer un nouveau sales_contact au client.
     """
     serializer_class = ClientSerializer
-    # serializer_action_classes = {
-    #     'list': serializers.ClientListSerializer,
-    # }
-    # ordering_fields = ("last_name", "sales_contact")
-    # queryset = Client.objects.all().order_by("last_name") ds get_queryset not working as well
-
     permission_classes = [IsAuthenticated, ]
 
     def get_object(self):
@@ -247,11 +239,6 @@ class ClientViewSet(ModelViewSet):
         context.update({"request": self.request})
         return context
 
-    # def get_serializer_class(self):
-    #     try:
-    #         return self.serializer_action_classes[self.action]
-    #     except (KeyError, AttributeError):
-    #         return super().get_serializer_class()
 
     def get_permissions(self):
         """ gets permissions

@@ -53,8 +53,7 @@ class Client(models.Model):
             raise error
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name} ( {self.status}: id. {self.id} )," \
-               f" sales_contact : {self.sales_contact}"
+        return f"{self.first_name} {self.last_name} ( {self.status}: id. {self.id} )"
 
 
 class Contract(models.Model):
@@ -67,6 +66,13 @@ class Contract(models.Model):
         to=Client,
         on_delete=models.CASCADE,
         # à changer pour RESTRICT après les tests pour protéger les contrats
+    )
+    sales_contact = models.ForeignKey(
+        to=settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True
+        # null=True autorise l'absence de commercial désigné (départ du commercial en charge par exemple)
     )
 
     class Meta:

@@ -1,0 +1,171 @@
+ERROR 2022-06-06 18:58:10,195 log-Internal Server Error: /admin-employees/
+Traceback (most recent call last):
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 415, in initial
+    self.check_permissions(request)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 331, in check_permissions
+    for permission in self.get_permissions():
+TypeError: 'bool' object is not iterable
+ERROR 2022-06-06 18:58:10,203 basehttp-"GET /admin-employees/ HTTP/1.1" 500 98596
+ERROR 2022-06-06 18:59:40,616 log-Internal Server Error: /admin-employees/
+Traceback (most recent call last):
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 415, in initial
+    self.check_permissions(request)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 332, in check_permissions
+    if not permission.has_permission(request, self):
+AttributeError: 'bool' object has no attribute 'has_permission'
+ERROR 2022-06-06 18:59:40,623 basehttp-"GET /admin-employees/ HTTP/1.1" 500 98953
+ERROR 2022-06-06 19:01:27,641 log-Internal Server Error: /admin-employees/
+Traceback (most recent call last):
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 415, in initial
+    self.check_permissions(request)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 332, in check_permissions
+    if not permission.has_permission(request, self):
+AttributeError: 'bool' object has no attribute 'has_permission'
+ERROR 2022-06-06 19:01:27,649 basehttp-"GET /admin-employees/ HTTP/1.1" 500 98953
+ERROR 2022-06-06 19:01:30,514 log-Internal Server Error: /admin-employees/
+Traceback (most recent call last):
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 415, in initial
+    self.check_permissions(request)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 332, in check_permissions
+    if not permission.has_permission(request, self):
+AttributeError: 'bool' object has no attribute 'has_permission'
+ERROR 2022-06-06 19:01:30,549 basehttp-"GET /admin-employees/ HTTP/1.1" 500 98953
+ERROR 2022-06-06 19:03:14,196 log-Internal Server Error: /admin-employees/
+Traceback (most recent call last):
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 415, in initial
+    self.check_permissions(request)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 332, in check_permissions
+    if not permission.has_permission(request, self):
+AttributeError: 'bool' object has no attribute 'has_permission'
+ERROR 2022-06-06 19:03:14,203 basehttp-"GET /admin-employees/ HTTP/1.1" 500 98953
+WARNING 2022-06-06 19:03:40,023 views-admin-employee was accessed by AnonymousUser for GET
+WARNING 2022-06-06 19:03:40,072 views-admin-employee was accessed by AnonymousUser for POST
+WARNING 2022-06-06 19:03:40,074 views-admin-employee was accessed by AnonymousUser for POST
+WARNING 2022-06-06 19:03:40,095 views-admin-employee was accessed by AnonymousUser for OPTIONS
+WARNING 2022-06-06 19:03:54,286 views-admin-employee was accessed by Jack, sales (id:16) for GET
+WARNING 2022-06-06 19:03:54,290 views-admin-employee was accessed by Jack, sales (id:16) for POST
+WARNING 2022-06-06 19:03:54,292 views-admin-employee was accessed by Jack, sales (id:16) for POST
+WARNING 2022-06-06 19:03:54,308 views-admin-employee was accessed by Jack, sales (id:16) for OPTIONS
+WARNING 2022-06-06 19:07:18,055 views-admin-employee was accessed by Jack, sales (id:16) for GET
+WARNING 2022-06-06 19:07:18,061 views-admin-employee was accessed by Jack, sales (id:16) for POST
+WARNING 2022-06-06 19:07:18,064 views-admin-employee was accessed by Jack, sales (id:16) for POST
+WARNING 2022-06-06 19:07:18,082 views-admin-employee was accessed by Jack, sales (id:16) for OPTIONS
+WARNING 2022-06-06 19:10:57,911 views-admin-employee was accessed by Jack, sales (id:16) for GET
+WARNING 2022-06-06 19:10:57,915 views-admin-employee was accessed by Jack, sales (id:16) for POST
+WARNING 2022-06-06 19:10:57,917 views-admin-employee was accessed by Jack, sales (id:16) for POST
+WARNING 2022-06-06 19:10:57,919 views-admin-employee was accessed by Jack, sales (id:16) for OPTIONS
+WARNING 2022-06-06 19:10:57,951 log-Forbidden: /admin-employees/
+WARNING 2022-06-06 19:10:57,952 basehttp-"GET /admin-employees/ HTTP/1.1" 403 5402
+WARNING 2022-06-06 19:14:13,128 views-admin-employee was accessed by AnonymousUser for GET
+ERROR 2022-06-06 19:14:13,174 log-Internal Server Error: /admin-employees/
+Traceback (most recent call last):
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 415, in initial
+    self.check_permissions(request)
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/.env/lib/python3.10/site-packages/rest_framework/views.py", line 332, in check_permissions
+    if not permission.has_permission(request, self):
+  File "/mnt/c/Users/galatee/OpenClassroom/P12/epic_event/users/permissions.py", line 13, in has_permission
+    if request.user.team == "management":
+AttributeError: 'AnonymousUser' object has no attribute 'team'
+ERROR 2022-06-06 19:14:13,182 basehttp-"GET /admin-employees/ HTTP/1.1" 500 102770
+WARNING 2022-06-06 19:14:23,308 log-Forbidden: /
+WARNING 2022-06-06 19:14:23,309 basehttp-"GET / HTTP/1.1" 403 4865
+WARNING 2022-06-06 19:16:11,273 views-admin-employee was accessed by Doctor, management (id:18) for GET
+WARNING 2022-06-06 19:16:11,278 views-admin-employee was accessed by Doctor, management (id:18) for POST
+WARNING 2022-06-06 19:16:11,284 views-admin-employee was accessed by Doctor, management (id:18) for POST
+WARNING 2022-06-06 19:16:11,301 views-admin-employee was accessed by Doctor, management (id:18) for OPTIONS

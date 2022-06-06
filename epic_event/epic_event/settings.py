@@ -194,17 +194,35 @@ LOGIN_REDIRECT_URL = ''
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    # FORMATTERS
+    'formatters': {
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+        'verbose': {
+            'format': '{levelname} {asctime} {module}-{message}',
+            'style': '{',
+        },
+    },
     # FILTERS
     'filters': {
         'require_debug_true': {
             '()': 'django.utils.log.RequireDebugTrue',
         },
+    },
     # HANDLERS
     'handlers': {
         'console': {
-            'level': 'INFO',
+            'level': 'DEBUG',
             'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+        'debug': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': "./logs/debug.log",
             'formatter': 'verbose',
         },
         'file': {
@@ -217,34 +235,29 @@ LOGGING = {
             'level': 'WARNING',
             'class': 'logging.FileHandler',
             'filename': "./logs/warning.log",
-            'formatter': 'simple',
+            'formatter': 'verbose',
         },
     },
     # LOGGERS
     'loggers': {
-        'django': {
-            'handlers': ['console'],
+        'CRM': {
+            'handlers': ['console', 'file', 'warning_file'],
+            'level': 'DEBUG',
             'propagate': True,
         },
         'django': {
-            'handlers': ['file', 'warning_file'],
+            'handlers': ['console', 'file', 'warning_file'],
             'level': 'INFO',
             'propagate': True,
         },
-    },
-    # FORMATTERS
-    'formatters': {
-        'simple': {
-            'format': '{levelname} {message}',
-            'style': '{',
+        'users': {
+            'handlers': ['console', 'file', 'warning_file'],
+            'level': 'DEBUG',
+            'propagate': True,
         },
-        'verbose': {
-            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
-            'style': '{',
-        },
+
     },
     }
-}
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',  # this is default

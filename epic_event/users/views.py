@@ -5,15 +5,17 @@ from rest_framework.generics import UpdateAPIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
-
 from rest_framework import viewsets
 
+from .permissions import ManagementTeamPermission
 from .models import CustomUser
 from .serializers import (
     CustomUserSerializer,
     RegisterUserSerializer,
     ChangePasswordSerializer
 )
+
+logger = logging.getLogger('users')
 
 
 class AdminEmployeeViewset(viewsets.ModelViewSet):
@@ -22,7 +24,19 @@ class AdminEmployeeViewset(viewsets.ModelViewSet):
     """
     serializer_class = RegisterUserSerializer  # plus détaillé, au lieu de CustomUserSerializer
     queryset = users = CustomUser.objects.all()
-    permission_classes = (IsAuthenticated, IsAdminUser)
+    # permission_classes = (IsAuthenticated, ManagementTeamPermission)
+    # si is_staff pour avoir accès à l'interface admin, il faut une perm spécifique, sinon utiliser IsAdminUser
+
+    def get_permissions(self):
+        print(self.request.user.is_superuser)
+        logger.debug(f'valeur de is_superuser : {self.request.user.is_superuser}')
+        if self.request.user.is_superuser:
+            logger.info(f'admin-employee was accessed by {self.request.user} for {self.request.method}')
+            return [IsAuthenticated(), IsAdminUser()]
+        else:
+            logger.warning(f'admin-employee was accessed by {self.request.user} for {self.request.method}')
+            return [IsAuthenticated(), ManagementTeamPermission()]
+
 
 class EmployeeView(APIView):
     """ List all users """
