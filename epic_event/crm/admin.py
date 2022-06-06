@@ -36,13 +36,19 @@ class LogEntryAdmin(admin.ModelAdmin):
 
 @admin.register(Client)
 class ClientAdmin(GuardedModelAdmin):
-    list_display = ('first_name', 'last_name', 'sales_contact')
+    list_display = ('first_name', 'last_name', 'company_name', 'sales_contact')  # must be a tuple
+    list_filter = ('last_name', 'company_name')
 
     def get_queryset(self, request):
         qs = super().get_queryset(request)
         if request.user.is_superuser:
             return qs
+        if request.user.team == "support":
+            return qs
+        if request.user.team == "management":
+            return qs
         return qs.filter(sales_contact=request.user)
+        # limite la visibilité à leurs seuls clients
         return super().get_queryset(request)
         logger.info(f"on veut l'objet_client :{obj}, et le user : {request.user}")
 
@@ -87,7 +93,40 @@ class ClientAdmin(GuardedModelAdmin):
         #     return False
         # # return obj is None or obj.sales_contact == request.user
 
+@admin.register(Contract)
+class ContractAdmin(GuardedModelAdmin):
+    list_display = ('object', 'date_signature', 'client')  # must be a tuple
+    list_filter = ('object', 'date_signature', 'client')
 
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        if request.user.team == "support":
+            return qs
+        if request.user.team == "management":
+            return qs
+        return qs.filter(sales_contact=request.user)
+        return super().get_queryset(request)
+        logger.info(f"on veut l'objet_client :{obj}, et le user : {request.user}")
+
+
+@admin.register(Event)
+class EventAdmin(GuardedModelAdmin):
+    list_display = ('name', 'date', 'client', 'support')  # must be a tuple
+    list_filter = ('name', 'date', 'client', 'support')
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        if request.user.team == "sales":
+            return qs
+        if request.user.team == "management":
+            return qs
+        return qs.filter(support=request.user)
+        return super().get_queryset(request)
+        logger.info(f"on veut l'objet_client :{obj}, et le user : {request.user}")
 # admin.site.register(Client)
-admin.site.register(Contract)
-admin.site.register(Event)
+# admin.site.register(Contract)
+# admin.site.register(Event)

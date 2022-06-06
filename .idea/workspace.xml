@@ -4,25 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ed24f16-294a-413c-af81-dd9cf5b74694" name="Changes" comment="added custom DRF Browsable API with api.html">
+    <list default="true" id="3ed24f16-294a-413c-af81-dd9cf5b74694" name="Changes" comment="unique_employee and unique_client">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/epic_event/crm/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/crm/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/epic_event/crm/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/crm/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/crm/permissions.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/crm/permissions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/epic_event/crm/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/crm/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/epic_event/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/epic_event/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/epic_event/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/epic_event/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/logs/debug.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/logs/info.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/logs/warning.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/templates/rest_framework/api.html" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/templates/rest_framework/api.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/users/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/users/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/users/managers.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/users/managers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/users/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/users/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/users/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/users/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/epic_event/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/epic_event/users/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,10 +38,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../P10" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/epic_event" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\galatee\OpenClassroom\P12\epic_event" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\galatee\OpenClassroom\P12\epic_event" />
       <recent name="C:\Users\galatee\OpenClassroom\P12\epic_event\epic_event" />
@@ -136,7 +125,21 @@
       <option name="project" value="LOCAL" />
       <updated>1654095974591</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="better custom of Django Admin">
+      <created>1654290922363</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1654290922363</updated>
+    </task>
+    <task id="LOCAL-00007" summary="unique_employee and unique_client">
+      <created>1654290976247</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1654290976247</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -159,6 +162,8 @@
     <MESSAGE value="postgreSQL &amp; required endpoints working" />
     <MESSAGE value="corrections and added loggin in settings" />
     <MESSAGE value="added custom DRF Browsable API with api.html" />
-    <option name="LAST_COMMIT_MESSAGE" value="added custom DRF Browsable API with api.html" />
+    <MESSAGE value="better custom of Django Admin" />
+    <MESSAGE value="unique_employee and unique_client" />
+    <option name="LAST_COMMIT_MESSAGE" value="unique_employee and unique_client" />
   </component>
 </project>

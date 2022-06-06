@@ -100,7 +100,7 @@ class Event(models.Model):
     """"""
     name = models.CharField(max_length=120, unique=True)
     date = models.DateTimeField(default=timezone.now)
-    location = models.CharField(max_length=120)
+    location = models.CharField(max_length=120, default="undetermined")
     description = models.TextField(max_length=2048, blank=True)
     client = models.ForeignKey(
         to=Client,
